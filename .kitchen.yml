@@ -12,4 +12,7 @@ platforms:
 suites:
 - name: default
   run_list: ["recipe[bear-sunday]", "recipe[bear-sunday::nginx]"]
-  attributes: {}
+  attributes:
+    php:
+      directives:
+        date.timezone: Asia/Tokyo
