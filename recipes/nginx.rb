@@ -47,7 +47,7 @@ when 'prod'
     group node['php-fpm']['pool']['www']['group']
     command "php #{application_path}/bin/compiler.php"
 
-    notify :reload, "service[php-fpm]", :immediately
+    notifies :reload, "service[php-fpm]", :immediately
 
     not_if { ::File.exists?("#{application_path}/var/tmp/preloader/preload.php") }
   end
