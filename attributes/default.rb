@@ -1,12 +1,12 @@
 #
-# Cookbook Name:: bear-sunday
+# Cookbook Name:: bearsunday
 # Attributes:: default
 #
 # Copyright 2013, Webnium, Inc
 #
 # BSD
 #
-default["bear-sunday"]["install_path"]  = "/usr/local/lib/bear"
-default["bear-sunday"]["version"]       = "dev-develop"
-default["bear-sunday"]["app_name"]      = "Sandbox"
-default["bear-sunday"]["nginx_context"] = "prod"
+default["bearsunday"]["install_path"]  = "/usr/local/lib/bear"
+default["bearsunday"]["version"]       = "dev-develop"
+default["bearsunday"]["app_name"]      = "Sandbox"
+default["bearsunday"]["nginx_context"] = "prod"

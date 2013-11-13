@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: bear-sunday
+# Cookbook Name:: bearsunday
 # Recipe:: nginx
 #
 # Copyright 2013, Webnium, Inc

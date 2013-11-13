@@ -1,12 +1,12 @@
 #
-# Cookbook Name:: bear-sunday
+# Cookbook Name:: bearsunday
 # Recipe:: default
 #
 # Copyright 2013, Webnium, Inc
 #
 # BSD
 #
-include_recipe 'bear-sunday::environment'
+include_recipe 'bearsunday::environment'
 
 %w{php-pecl-xhprof php-pecl-xdebug}.each do |pkg|
   package pkg do

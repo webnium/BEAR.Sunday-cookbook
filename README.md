@@ -8,13 +8,13 @@ Requirements
 #### Cookbooks
 - `yum` - install php >= 5.4
 - `php` - install php
-- `php-fpm` - install php-fpm used by `bear-sunday::nginx`
+- `php-fpm` - install php-fpm used by `bearsunday::nginx`
 - `nginx` - for application server
 - `composer` - BEAR.Sunday uses composer to manage dependency
 
 Attributes
 ----------
-#### bear-sunday::default
+#### bearsunday::default
 <table>
   <tr>
     <th>Key</th>
@@ -23,20 +23,20 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['bear-sunday']['version']</tt></td>
+    <td><tt>['bearsunday']['version']</tt></td>
     <td>String</td>
     <td>version to be installed</td>
     <td><tt></tt></td>
   </tr>
   <tr>
-    <td><tt>['bear-sunday']['install_path']</tt></td>
+    <td><tt>['bearsunday']['install_path']</tt></td>
     <td>String</td>
     <td>location where BEAR.Package to be placed</td>
     <td><tt>/usr/local/lib/bear</tt></td>
   </tr>
 </table>
 
-#### bear-sunday::default
+#### bearsunday::default
 <table>
   <tr>
     <th>Key</th>
@@ -45,13 +45,13 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['bear-sunday']['app_name']</tt></td>
+    <td><tt>['bearsunday']['app_name']</tt></td>
     <td>String</td>
     <td>Application name to be setup</td>
     <td><tt>"Sandbox"</tt></td>
   </tr>
   <tr>
-    <td><tt>['bear-sunday']['nginx_context']</tt></td>
+    <td><tt>['bearsunday']['nginx_context']</tt></td>
     <td>String "dev", "api" or "prod"</td>
     <td>context name to be run</td>
     <td><tt>"dev"</tt></td>
@@ -61,14 +61,14 @@ Attributes
 
 Usage
 -----
-#### bear-sunday::default
-Just include `bear-sunday` in your node's `run_list`:
+#### bearsunday::default
+Just include `bearsunday` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[bear-sunday]"
+    "recipe[bearsunday]"
   ]
 }
 ```

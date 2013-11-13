@@ -1,4 +1,4 @@
-name             'bear-sunday'
+name             'bearsunday'
 maintainer       'Webnium, Inc'
 maintainer_email 'koichi@webnium.co.jp'
 license          'BSD'
@@ -11,9 +11,10 @@ depends 'nginx'
 depends 'yum'
 depends 'composer'
 depends 'php-fpm'
+depends 'mysql'
 
 supports "centos", ">= 6.0"
 
-recipe "bear-sunday", "Install BEAR.Package"
-recipe "bear-sunday::environment", "Setup environment requried by BEAR.Sunday"
-recipe "bear-sunday::nginx", "Install nginx environment for a BEAR.Sunday application"
+recipe "bearsunday", "Install BEAR.Package"
+recipe "bearsunday::environment", "Setup environment requried by BEAR.Sunday"
+recipe "bearsunday::nginx", "Install nginx environment for a BEAR.Sunday application"
