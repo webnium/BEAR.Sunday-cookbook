@@ -58,11 +58,19 @@ def create_config
     :fpm_pass         => @new_resource.fpm_pass
   }
 
+  template_source = @new_resource.source
+
   template @new_resource.config_path do
     owner "root"
     group "root"
     mode 0644
-    source "nginx.conf.erb"
+
+    if template_source
+      source template_source
+    else
+      source "nginx.conf.erb"
+      cookbook "bearsunday"
+    end
 
     variables(template_variables)
   end
