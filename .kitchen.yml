@@ -11,7 +11,7 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[bear-sunday]", "recipe[bear-sunday::nginx]"]
+  run_list: ["recipe[bearsunday]", "recipe[bearsunday::nginx]"]
   attributes:
     php:
       directives:
