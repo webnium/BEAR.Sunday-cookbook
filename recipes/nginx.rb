@@ -14,7 +14,7 @@ bearsunday_nginx_config "/etc/nginx/conf.d/default.conf" do
   application_path "#{node['bearsunday']['install_path']}/apps/#{node['bearsunday']['app_name']}"
   context           node['bearsunday']['nginx_context']
   listen            80
-  default_server    false
+  default_server    true
   server_name       '_'
   fpm_pass          {node['php-fpm']['pool']['www']['listen'].sub('/', 'unix:/')}
 
