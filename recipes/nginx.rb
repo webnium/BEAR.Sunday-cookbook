@@ -9,7 +9,6 @@
 include_recipe "nginx"
 include_recipe "php-fpm"
 
-
 bearsunday_nginx_config "/etc/nginx/conf.d/default.conf" do
   application_path "#{node['bearsunday']['install_path']}/apps/#{node['bearsunday']['app_name']}"
   context           node['bearsunday']['nginx_context']
