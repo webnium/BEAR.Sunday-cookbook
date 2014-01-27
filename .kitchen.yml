@@ -11,8 +11,15 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[bearsunday]", "recipe[bearsunday::nginx]"]
+  run_list: ["recipe[bearsunday]", "recipe[bearsunday::app]", "recipe[bearsunday::nginx]"]
   attributes:
     php:
       directives:
         date.timezone: Asia/Tokyo
+    bearsunday:
+      app_name: "skeleton"
+      app:
+        source: "https://github.com/koriym/BEAR.Skeleton.git"
+        version: "develop"
+        composer_prefer: "source"
+        for_production: false
