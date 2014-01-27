@@ -15,4 +15,4 @@ default["bearsunday"]["nginx_site_enabled"] = true
 default["bearsunday"]["app"]["install_path"] = "#{node['bearsunday']['install_path']}/apps/#{node['bearsunday']['app_name']}"
 default["bearsunday"]["app"]["version"] = "master"
 default["bearsunday"]["app"]["for_production"] = true
-default["bearsunday"]["app"]["composer_prefer"] = true
+default["bearsunday"]["app"]["composer_prefer"] = "dist"
