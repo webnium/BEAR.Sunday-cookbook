@@ -20,7 +20,6 @@ bearsunday_nginx_config "/etc/nginx/sites-available/#{node[:bearsunday][:nginx_s
   action :install
 
   notifies :reload, "service[nginx]", :delayed
-  notifies :reload, "service[php-fpm]", :delayed
   subscribes :reload, "bash[install_bear_package]", :immediately if %w{Helloworld Sandbox}.include?(node['bearsunday']['app_name'])
 end
 

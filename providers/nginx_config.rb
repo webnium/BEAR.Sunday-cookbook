@@ -14,12 +14,9 @@ end
 use_inline_resources
 
 action :install do
-  updated = false
   Chef::Log.info "Installing #{@new_resource} for #{@new_resource.application_path} to #{@new_resource.config_path}"
-  updated = updated || create_config
-  updated = updated || change_directory_permissions
-
-  @new_resource.updated_by_last_action(updated)
+  create_config
+  change_directory_permissions
 end
 
 action :uninstall do
@@ -85,7 +82,5 @@ def change_directory_permissions
       action :create
       only_if { ::File.exists?(dir) }
     end
-    updated = updated || d.updated_by_last_action?
   end
-  return updated
 end

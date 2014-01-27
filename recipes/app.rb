@@ -11,4 +11,6 @@ bearsunday_app node[:bearsunday][:app][:install_path] do
   version node[:bearsunday][:app][:version]
   composer_prefer node[:bearsunday][:app][:composer_prefer]
   for_production node[:bearsunday][:app][:for_production]
+
+  notifies :reload, "service[php-fpm]", :delayed
 end

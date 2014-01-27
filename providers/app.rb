@@ -17,10 +17,8 @@ action :install do
   Chef::Log.info "Installing #{@new_resource}"
 
   updated = sync_with_git || change_directory_permissions 
-  if updated then
-    composer_install
-    precomplie
-  end
+  composer_install
+  clear_cache
 
   @new_resource.updated_by_last_action(updated)
 end
@@ -31,11 +29,8 @@ action :update do
   Chef::Log.info "Updating #{@new_resource}"
 
   updated = sync_with_git || change_directory_permissions 
-  if updated then
-    composer_install
-    precomplie
-    clear_cache
-  end
+  composer_install
+  clear_cache
 
   @new_resource.updated_by_last_action(updated)
 end
@@ -105,28 +100,22 @@ def composer_install
   execute "composer-install-on-#{resource.application_path}" do
     cwd resource.application_path
     user resource.user
-
     command "composer install #{options.join(' ')}"
-  end
-end
 
-def precomplie
-  resourece = @new_resource
-  execute "precompile-on-#{resource.application_path}" do
-    group resource.group
-    user  resource.user
-
-    command "php #{resource.application_path}/bin/compiler.php"
-    only_if {::File.exists?("#{resource.application_path}/bin/compiler.php")}
+    subscribes :run, "git[#{resource.application_path}]", :immediately
+    action :nothing
   end
 end
 
 def clear_cache
-  resourece = @new_resource
-  execute "clear-cache-on-#{resource.application_path}" do
-    group resource.group
-    user  resource.user
+  execute "clear-cache-on-#{new_resource.application_path}" do
+    cwd new_resource.application_path
+    group new_resource.group
+    user  new_resource.user
 
-    command "php #{resource.application_path}/bin/clear.php"
+    command "php #{new_resource.application_path}/bin/clear.php"
+
+    subscribes :run, "git[#{new_resource.application_path}]", :immediately
+    action :nothing
   end
 end
