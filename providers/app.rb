@@ -57,11 +57,11 @@ end
 
 private
 
-def sync_with_git do
+def sync_with_git
   resource = @new_resource
   g = git @new_resource.application_path do
     repository resource.source
-    reference resource.source_reference
+    reference resource.version
     action :sync
 
     user resource.user 
@@ -86,7 +86,7 @@ def change_directory_permissions
   return updated
 end
 
-def composer_install do
+def composer_install
   resource = @new_resource
   options = []
 
@@ -110,17 +110,18 @@ def composer_install do
   end
 end
 
-def precomplie do
+def precomplie
   resourece = @new_resource
   execute "precompile-on-#{resource.application_path}" do
     group resource.group
     user  resource.user
 
     command "php #{resource.application_path}/bin/compiler.php"
+    only_if {::File.exists?("#{resource.application_path}/bin/compiler.php")}
   end
 end
 
-def clear_cache do
+def clear_cache
   resourece = @new_resource
   execute "clear-cache-on-#{resource.application_path}" do
     group resource.group
